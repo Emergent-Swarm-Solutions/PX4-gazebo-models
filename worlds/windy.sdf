@@ -1,5 +1,10 @@
 <sdf version='1.9'>
   <world name='windy'>
+    <plugin filename="gz-sim-wind-effects-system"
+            name="gz::sim::systems::WindEffects">
+      <force_approximation_scaling_factor>1</force_approximation_scaling_factor>
+    </plugin>
+
     <physics type="ode">
       <max_step_size>0.004</max_step_size>
       <real_time_factor>1.0</real_time_factor>

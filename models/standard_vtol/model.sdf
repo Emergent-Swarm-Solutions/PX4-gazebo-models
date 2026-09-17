@@ -838,6 +838,16 @@
       <!-- Keep the same values as in default.sdf -->
       <wind_velocity>2 0 0</wind_velocity>
     </plugin>
+    <plugin filename="libWindForcePlugin.so" name="px4::WindForce">
+      <link_name>base_link</link_name>
+      <!-- Simple isotropic drag model: F = 0.5 * rho * (Cd*A) * |v_rel| * v_rel -->
+      <!-- Placeholder Cd*A [m^2] - tune against this airframe's real frontal area/drag -->
+      <drag_area_coefficient>0.5</drag_area_coefficient>
+      <wind_velocity>2 0 0</wind_velocity>
+      <!-- base_link rests at world Z ~0.246m (model pose above); stay a little
+           above that so a parked/disarmed vehicle isn't blown around by wind -->
+      <min_height_for_wind>0.5</min_height_for_wind>
+    </plugin>
     <static>0</static>
   </model>
 </sdf>
