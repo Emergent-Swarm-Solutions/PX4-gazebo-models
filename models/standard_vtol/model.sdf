@@ -687,7 +687,7 @@
       <cma_stall>0</cma_stall>
       <cp>-0.05 0.3 0.05</cp>
       <area>0.50</area>
-      <air_density>1.2041</air_density>
+      <air_density>1.225</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>base_link</link_name>
@@ -710,7 +710,7 @@
       <cma_stall>0</cma_stall>
       <cp>-0.05 -0.3 0.05</cp>
       <area>0.50</area>
-      <air_density>1.2041</air_density>
+      <air_density>1.225</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>base_link</link_name>
@@ -733,7 +733,7 @@
       <cma_stall>0</cma_stall>
       <cp>-0.5 0 0</cp>
       <area>0.01</area>
-      <air_density>1.2041</air_density>
+      <air_density>1.225</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
       <link_name>base_link</link_name>
@@ -832,11 +832,10 @@
       <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
       <motorType>velocity</motorType>
     </plugin>
+    <!-- AirSpeed and WindForce read gz's world wind entity (the world <wind>, updated at runtime by WindEffects
+         from /world/<world>/wind), the same air LiftDrag and the rotor drag use. -->
     <plugin filename="libAirSpeedPlugin.so" name="px4::AirSpeed">
       <link_name>base_link</link_name>
-      <!-- Gazebo ENU: x = East, y = North, z = Up -->
-      <!-- Keep the same values as in default.sdf -->
-      <wind_velocity>2 0 0</wind_velocity>
     </plugin>
     <plugin filename="libWindForcePlugin.so" name="px4::WindForce">
       <link_name>base_link</link_name>
@@ -844,7 +843,6 @@
       <!-- Kept well under this airframe's own LiftDrag wing surfaces
            (cda=0.64 * area=0.5 = 0.32 m^2 per wing): -->
       <drag_area_coefficient>0.08</drag_area_coefficient>
-      <wind_velocity>2 0 0</wind_velocity>
       <!-- base_link rests at world Z ~0.246m (model pose above); stay a little
            above that so a parked/disarmed vehicle isn't blown around by wind -->
       <min_height_for_wind>0.5</min_height_for_wind>
